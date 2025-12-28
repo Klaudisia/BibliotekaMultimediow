@@ -1,0 +1,28 @@
+@model BibliotekaProjekt.Models.Ksiazka
+
+<h2>Dodaj nową książkę</h2>
+
+<form asp-action="DodajKsiazke" method="post" style="max-width: 400px;">
+    <div class="mb-3">
+        <label>Tytuł</label>
+        <input asp-for="Tytul" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label>Autor</label>
+        <input asp-for="Autor" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Rok wydania</label>
+        <input asp-for="RokWydania" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Liczba stron</label>
+        <input asp-for="LiczbaStron" type="number" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Zapisz książkę</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>
