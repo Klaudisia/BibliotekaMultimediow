@@ -41,4 +41,14 @@ namespace BibliotekaProjekt.Models
                 return 0;
         }
     }
+
+    public class Ebook : Zasob
+    {
+        public string Autor {get; set;}
+        public int LiczbaStron {get; set;}
+        public override decimal ObliczKare(int dniSpoznienia)
+        {
+            return 0m;
+        }
+    }
 }

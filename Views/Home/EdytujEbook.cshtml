@@ -1,0 +1,30 @@
+@model BibliotekaProjekt.Models.Ebook
+
+<h2>Edytuj Ebook</h2>
+
+<form asp-action="EdytujEbook" method="post" style="max-width: 400px;">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Tytuł</label>
+        <input asp-for="Tytul" class="form-control" required />
+    </div>
+    
+    <div class="mb-3">
+        <label>Autor</label>
+        <input asp-for="Autor" class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label>Rok wydania</label>
+        <input asp-for="RokWydania" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Liczba stron</label>
+        <input asp-for="LiczbaStron" type="number" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-warning">Zapisz zmiany</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

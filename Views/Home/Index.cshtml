@@ -5,8 +5,7 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Moja Biblioteka</h1>
-    <p>Projekt zaliczeniowy z Programowania Obiektowego</p>
+    <h1 class="display-4">Biblioteka Multimediów</h1>
 </div> 
 <form asp-action="Index" method="get" class="mb-3 d-flex gap-2">
     <input type="text" name="fraza" class="form-control" placeholder="Szukaj po tytule lub autorze..." style="max-width: 300px;">
@@ -15,6 +14,8 @@
 </form>
 <p>
     <a asp-action="DodajKsiazke" class="btn btn-success"> + Dodaj Nową Książkę</a>
+    <a asp-action="DodajEbook" class="btn btn-success"> + Dodaj Nowego Ebooka</a>
+    <a asp-action="DodajFilm" class="btn btn-success"> + Dodaj Nowy Film</a>
 </p>
 <table class="table table-striped table-hover">
     <thead class="table-dark">
@@ -42,6 +43,10 @@
                     {
                         <span class="badge bg-success">Film</span>
                     }
+                    else if (item is BibliotekaProjekt.Models.Ebook)
+                    {
+                        <span class="badge bg-info text-dark">Ebook</span>
+                    }
                 </td>
                 <td>@item.Tytul</td>
                 <td>@item.RokWydania</td>
@@ -54,11 +59,28 @@
                     {
                         <span>Reżyser: @f.Rezyser (@f.CzasTrwaniaMinuty min)</span>
                     }
+                    else if (item is BibliotekaProjekt.Models.Ebook e){
+                        <span>Autor: @e.Autor (@e.LiczbaStron str.)</span>
+                    }
                 </td>
                 <td style="color: red; font-weight: bold;">
                     @item.ObliczKare(10).ToString("C")
                 </td>
                 <td>
+                    @if (item is BibliotekaProjekt.Models.Ksiazka)
+                    {
+                        <a asp-action="EdytujKsiazke" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edytuj</a>
+                    }
+                    else if (item is BibliotekaProjekt.Models.Ebook)
+                    {
+                        <a asp-action="EdytujEbook" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edytuj</a>
+
+                    }
+                    else if (item is BibliotekaProjekt.Models.Film)
+                    {
+                        <a asp-action="EdytujFilm" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edytuj</a>
+
+                    }
                     <a asp-action="Usun" asp-route-id="@item.Id" class="btn btn-danger btn-sm" onclick="return confirm('Na pewno usunąć?');">Usuń</a>
                 </td>
             </tr>

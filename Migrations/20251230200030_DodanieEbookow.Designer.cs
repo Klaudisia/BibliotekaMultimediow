@@ -2,6 +2,7 @@
 using BibliotekaProjekt.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BibliotekaProjekt.Migrations
 {
     [DbContext(typeof(BibliotekaContext))]
-    partial class BibliotekaContextModelSnapshot : ModelSnapshot
+    [Migration("20251230200030_DodanieEbookow")]
+    partial class DodanieEbookow
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -44,29 +47,6 @@ namespace BibliotekaProjekt.Migrations
                     b.HasDiscriminator().HasValue("Zasob");
 
                     b.UseTphMappingStrategy();
-                });
-
-            modelBuilder.Entity("BibliotekaProjekt.Models.Ebook", b =>
-                {
-                    b.HasBaseType("BibliotekaProjekt.Models.Zasob");
-
-                    b.Property<string>("Autor")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("LiczbaStron")
-                        .HasColumnType("INTEGER");
-
-                    b.ToTable("Zasoby", t =>
-                        {
-                            t.Property("Autor")
-                                .HasColumnName("Ebook_Autor");
-
-                            t.Property("LiczbaStron")
-                                .HasColumnName("Ebook_LiczbaStron");
-                        });
-
-                    b.HasDiscriminator().HasValue("Ebook");
                 });
 
             modelBuilder.Entity("BibliotekaProjekt.Models.Film", b =>

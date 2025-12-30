@@ -11,5 +11,6 @@ namespace BibliotekaProjekt.Data
         public DbSet<Zasob> Zasoby { get; set; }
         public DbSet<Ksiazka> Ksiazki { get; set; }
         public DbSet<Film> Filmy { get; set; }
+        public DbSet<Ebook> Ebook { get; set; }
     }
 }
